@@ -2,13 +2,14 @@
 # Script for fixing / correcting ~/.ssh permissions
 # Created by Yevgeniy Goncharov, https://sys-adm.in
 
-
+iam=`whoami`
 
 if [[ -d ~/.ssh ]]; then
     echo "Catalog ~/.ssh found. Fixing..."
-    chmod 700 ~/.ssh
-    chmod -r 600 ~/.ssh/
-    chmod -R 644 ~/.ssh/*.pub
+    sudo chown -R $iam:$iam ~/.ssh/
+    chmod u=rwx,go= ~/.ssh
+    chmod -R u=rw,go= ~/.ssh/
+    chmod -R a=r,u+w ~/.ssh/*.pub
 else
     echo "Catalog ~/.ssh does not exist.. Exit"
     exit 1
