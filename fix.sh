@@ -15,9 +15,11 @@ if [[ -d ~/.ssh ]]; then
     chmod -R u=rw,go= ~/.ssh/*
     chmod -R a=r,u+w ~/.ssh/*.pub
 
-    echo "Done"
+    echo -e "\nResult:\n"
 
     ls -la ~/.ssh
+
+    echo -e "\nDone\n"
 else
     echo "Catalog ~/.ssh does not exist.. Exit"
     exit 1
